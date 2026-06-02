@@ -8,13 +8,19 @@ export const Hero = () => {
     >
       <div className="absolute inset-0 bg-black/60" />
 
-      <div className="relative z-10 flex h-full sm:w-3/5 m-auto  flex-col justify-center px-6 text-left">
-        <h2 className="text-4xl font-bold">
+      <div className="relative z-10 flex h-lvh sm:w-5/8 m-auto flex-col justify-center px-6 text-left">
+        <h1 className="font-bold">
           <span className="block text-green-accent">Sätra</span>
           <span className="block text-orange-accent">Summer</span>
           <span className="block text-green-accent">Party '26</span>
+        </h1>
+        <h2 className="text-white">
+          <span className="block mb-6">Hållsätrabacken</span>
+          <span className="block">Lördag 4e juli 2026</span>
+          <span className="block text-orange-accent">från 16:00</span>
         </h2>
-        <p className="mt-10 text-xl text-white">Mer information kommer snart!</p>
+        <p className=" text-white">Barn och hundar välkomna!</p>
+        <p className=" text-white">Mer information kommer snart!</p>
       </div>
     </div>
   );
