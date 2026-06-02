@@ -4,8 +4,8 @@ import heroImage from "../assets/trees.jpg";
 
 export const Attendees = () => {
   const [count, setCount] = useState(0);
+  const [anim, setAnim] = useState(false);
 
-  // 1. Initial fetch
   const fetchCount = async () => {
     const { data, error } = await supabase
       .from("event")
@@ -18,15 +18,16 @@ export const Attendees = () => {
       return;
     }
 
-    if (!data) return;
-
-    setCount(data.attendees);
+    if (data) {
+      setCount(data.attendees);
+    }
   };
 
   useEffect(() => {
+    // initial load
     fetchCount();
 
-    // 2. Subscribe to realtime changes
+    // realtime subscription (ONLY ONE)
     const channel = supabase
       .channel("event-attendees")
       .on(
@@ -39,36 +40,32 @@ export const Attendees = () => {
         },
         (payload) => {
           setCount(payload.new.attendees);
+
+          setAnim(true);
+          setTimeout(() => setAnim(false), 150);
         },
       )
       .subscribe();
 
-    // cleanup
     return () => {
       supabase.removeChannel(channel);
     };
   }, []);
 
-  useEffect(() => {
-    const el = document.getElementById("counter");
-
-    if (el) {
-      el.classList.add("scale-125");
-      setTimeout(() => el.classList.remove("scale-125"), 150);
-    }
-  }, [count]);
-
   return (
     <div
-      className="relative w-full justify-center items-center gap-3   px-6 py-4 backdrop-blur-md content-center  bg-cover bg-bottom "
+      className="relative w-full justify-center items-center px-6 py-10 backdrop-blur-md bg-cover bg-bottom"
       style={{ backgroundImage: `url(${heroImage})` }}
     >
       <div className="absolute inset-0 bg-black/40" />
-      <h2 className="text- text-orange-accent -rotate-2">Hur många kommer?</h2>
-      <div className="relative flex justify-center items-center gap-3">
+
+      <div className="relative text-center">
+        <h2 className="text-orange-accent -rotate-2">Hur många kommer?</h2>
+
         <p
-          id="counter"
-          className="text-6xl sm:text-9xl font-bold text-white rotate-7"
+          className={`text-6xl sm:text-9xl font-bold text-white transition-transform duration-150 ${
+            anim ? "scale-125" : "scale-100"
+          }`}
         >
           {count}
         </p>

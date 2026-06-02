@@ -6,19 +6,37 @@ export const RsvpModal = () => {
   const [people, setPeople] = useState(1);
   const [done, setDone] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("idle");
+  // idle | loading | success | error
 
   const submit = async (e) => {
     e.preventDefault();
-    setLoading(true);
 
-    await fetch("/.netlify/functions/rsvp", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, people }),
-    });
+    // 1. INSTANT UI UPDATE
+    setStatus("success");
 
-    setLoading(false);
-    setDone(true);
+    const payload = { name, people };
+
+    // 2. FIRE REQUEST IN BACKGROUND
+    try {
+      const res = await fetch("/.netlify/functions/rsvp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) throw new Error("Request failed");
+
+      const data = await res.json();
+
+      // optional: sync counter if needed
+      // (your realtime already handles this)
+    } catch (err) {
+      console.error(err);
+
+      // rollback if something fails
+      setStatus("error");
+    }
   };
 
   return (
@@ -65,17 +83,33 @@ export const RsvpModal = () => {
             )}
 
             {/* success state */}
-            {done ? (
-              <div className="text-center py-10">
-                <p className="text-2xl font-bold text-green-accent">Tack! 🎉</p>
+            {status === "success" && (
+              <div className="text-center py-10 animate-pulse">
+                <p className="text-2xl font-bold text-green-accent">
+                  Du är med! 🎉
+                </p>
                 <p className="text-white/70 mt-2">
                   Vi ses på Sätra Summer Party
                 </p>
               </div>
-            ) : (
+            )}
+
+            {status === "error" && (
+              <div className="text-center py-10">
+                <p className="text-red-400 font-bold">Något gick fel 😬</p>
+                <button
+                  onClick={() => setStatus("idle")}
+                  className="mt-4 text-white underline"
+                >
+                  Försök igen
+                </button>
+              </div>
+            )}
+
+            {status === "idle" && (
               <form onSubmit={submit} className="space-y-4">
                 <input
-                  className="w-full p-3 bg-white/10 border border-white/20 rounded-lg outline-none"
+                  className="w-full p-3 bg-white/10 border border-white/20 rounded-lg"
                   placeholder="Namn"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -85,16 +119,13 @@ export const RsvpModal = () => {
                 <input
                   type="number"
                   min="1"
-                  className="w-full p-3 bg-white/10 border border-white/20 rounded-lg outline-none"
+                  className="w-full p-3 bg-white/10 border border-white/20 rounded-lg"
                   value={people}
                   onChange={(e) => setPeople(e.target.value)}
                 />
 
-                <button
-                  disabled={loading}
-                  className="w-full bg-green-accent text-black font-bold py-3 rounded-lg hover:scale-[1.02] transition-transform"
-                >
-                  {loading ? "Skickar..." : "Skicka RSVP"}
+                <button className="w-full bg-green-accent text-black font-bold py-3 rounded-lg">
+                  Skicka RSVP
                 </button>
               </form>
             )}
