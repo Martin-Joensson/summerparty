@@ -10,7 +10,7 @@ export const Quote = () => {
       <div className="text-white mt-6 text-xl text-left">
         <p>
           Vi fyller gården med sommarhäng, skratt, grill och roliga aktiviteter.
-          Kom förbi och hjut av en avslappnad eftermiddag och kväll tillsammans
+          Kom förbi och njut av en avslappnad eftermiddag och kväll tillsammans
           med vänner.
         </p>
         <p>
