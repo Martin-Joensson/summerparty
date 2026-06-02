@@ -17,9 +17,9 @@ function App() {
       <section>
         <Attendees />
       </section>
-      {/* <section>
+      <section>
         <Rsvp />
-      </section> */}
+      </section>
     </>
   );
 }

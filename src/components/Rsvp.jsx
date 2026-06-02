@@ -3,61 +3,48 @@ import { useState } from "react";
 export const Rsvp = () => {
   const [name, setName] = useState("");
   const [people, setPeople] = useState(1);
-  const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
 
-  const submitRsvp = async (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    setLoading(true);
 
-    await fetch("https://your-api.com/rsvp", {
+    await fetch("/.netlify/functions/rsvp", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, people }),
     });
 
-    setLoading(false);
     setDone(true);
   };
 
   if (done) {
-    return (
-      <div className="text-center text-white py-10">
-        Tack! Vi ses på festen 🎉
-      </div>
-    );
+    return <div className="text-white text-center py-10">Tack! 🎉</div>;
   }
 
   return (
-    <form
-      onSubmit={submitRsvp}
-          className="w-full max-w-xl mx-auto px-6 py-10 backdrop-blur-md"
-          
-    >
-      <h2 className="text-orange-accent -rotate-2 text-center mb-6">OSA här</h2>
-
-      <input
-        className="w-full p-3 mb-4 bg-white/10 text-white border border-white/20"
-        placeholder="Namn"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
-      />
-
-      <input
-        type="number"
-        min="1"
-        className="w-full p-3 mb-4 bg-white/10 text-white border border-white/20"
-        value={people}
-        onChange={(e) => setPeople(e.target.value)}
-      />
-
-      <button
-        disabled={loading}
-        className="w-full bg-green-accent text-black font-bold py-3"
+    <section>
+      <h2 className="text-green-accent rotate-10">OSA</h2>
+      <form
+        onSubmit={submit}
+        className="px-6 pb-10 flex flex-col items-center gap-4"
       >
-        {loading ? "Skickar..." : "Skicka RSVP"}
-      </button>
-    </form>
+        <span className="block">Jag heter:</span>
+        <input
+          className="block mb-3 p-2 bg-amber-50 rounded text-black"
+          placeholder="Namn"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <p>Jag tar med mig så här många personer:</p>
+        <input
+          type="number"
+          className="block mb-3 p-2 bg-amber-50 rounded text-black"
+          value={people}
+          onChange={(e) => setPeople(e.target.value)}
+        />
+
+        <button className="bg-green-accent px-4 py-2 rounded">Skicka RSVP</button>
+      </form>
+    </section>
   );
 };
