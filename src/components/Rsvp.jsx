@@ -23,19 +23,19 @@ export const Rsvp = () => {
 
   return (
     <section>
-      <h2 className="text-green-accent rotate-10">OSA</h2>
+      <h2 className="text-green-accent -rotate-10">Jag kommer!</h2>
       <form
         onSubmit={submit}
         className="px-6 pb-10 flex flex-col items-center gap-4"
       >
-        <span className="block">Jag heter:</span>
+        <span className="block">Jag som anmäler heter:</span>
         <input
           className="block mb-3 p-2 bg-amber-50 rounded text-black"
           placeholder="Namn"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <p>Jag tar med mig så här många personer:</p>
+        <p>Vi är ett gäng på:</p>
         <input
           type="number"
           className="block mb-3 p-2 bg-amber-50 rounded text-black"

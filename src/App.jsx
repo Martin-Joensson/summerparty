@@ -2,6 +2,7 @@ import { Attendees } from "./components/Attendees";
 import { Hero } from "./components/Hero";
 import { Countdown } from "./components/Countdown";
 import { Rsvp } from "./components/Rsvp";
+import { RsvpModal } from "./components/RsvpModal";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         <Attendees />
       </section>
       <section>
-        <Rsvp />
+        <RsvpModal />
+        {/* <Rsvp /> */}
       </section>
     </>
   );
