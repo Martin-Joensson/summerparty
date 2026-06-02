@@ -78,7 +78,7 @@ export const RsvpModal = () => {
               </h2>
             ) : (
               <h2 className="text-orange-accent -rotate-2 text-center text-xl font-bold mb-6">
-                Vad heter du och hur många kommer ni vara?
+                Vad heter du och hur många är ni som kommer?
               </h2>
             )}
 
@@ -86,9 +86,9 @@ export const RsvpModal = () => {
             {status === "success" && (
               <div className="text-center py-10 animate-bounce">
                 <p className="text-2xl font-bold text-green-accent">
-                  Du är med! 🎉
+                  Du är registrerad! 🎉
                 </p>
-                <p className="text-white/70 mt-2">
+                <p className="text-white mt-2">
                   Vi ses på Sätra Summer Party
                 </p>
               </div>

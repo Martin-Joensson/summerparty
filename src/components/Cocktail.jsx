@@ -21,6 +21,7 @@ export const Cocktail = () => {
         <h2 className="text-orange-accent rotate-2 text-2xl sm:text-3xl font-bold">
           Blandar du en grym drink?
         </h2>
+        <p className="text-white mt-2">Dela gärna med dig av din bästa skapelse. </p>
         <p className="text-white mt-2">Då kan du vinna pris i kategorierna: </p>
       </div>
 
@@ -31,8 +32,7 @@ export const Cocktail = () => {
             key={i}
             className="relative  bg-white/10 border border-white/20 backdrop-blur-md p-6 rounded-2xl transition-transform"
           >
-      
-            <h3 className="text-xl font-bold text-orange-accent">
+            <h3 className="text-xl font-bold text-green-accent">
               {item.title}
             </h3>
 
@@ -40,7 +40,10 @@ export const Cocktail = () => {
           </div>
         ))}
       </div>
-      <p className="text-white pt-8">Ta med dig det du behöver för att göra en grym drink. Vi står för glas och is! </p>
+      <p className="text-white pt-8">
+        Ta med dig det du behöver för att göra en grym drink till ett gäng personer. Vi står för glas
+        och is!{" "}
+      </p>
     </div>
   );
 };

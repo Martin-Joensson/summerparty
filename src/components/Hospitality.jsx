@@ -10,7 +10,7 @@ export const Hospitality = () => {
 
       <div className="relative z-10 flex  sm:w-5/8 m-auto flex-col justify-center px-6 text-left">
 
-        <h2 className="text-orange-accent rotate-2 text-center">
+        <h2 className="text-orange-accent rotate-1 text-center">
        Barn och hundar välkomna!
  
         </h2>

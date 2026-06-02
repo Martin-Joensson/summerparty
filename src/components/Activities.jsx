@@ -1,25 +1,35 @@
 import heroImage from "../assets/cornhole.jpg";
+import cornhole from "../assets/cornhole2.jpg";
+import drinks from "../assets/drinks-comp.jpg";
+import nerf from "../assets/nerf.jpg";
+import grill from "../assets/grill.jpg";
+import hang from "../assets/hang.jpg";
 
 export const Activities = () => {
   const activities = [
     {
-      title: "Blandar du en grym drink?",
-      desc: "Var med och tävla i Drinktävlingen!",
+      title: "Drinktävling",
+      image: drinks,
+      desc: "Må bästa smak vinna!",
     },
     {
       title: "Cornhole",
+      image: cornhole,
       desc: "Tävla på lite barnligt vis",
     },
     {
       title: "Nerf-prickskytte",
+      image: nerf,
       desc: "Vem siktar bäst?",
     },
     {
-      title: "Hängmatta & kuddhäng",
+      title: "Hängmatta",
+      image: hang,
       desc: "Max chill. Noll stress",
     },
     {
-      title: "Vegetarisk grill",
+      title: "Grill",
+      image: grill,
       desc: "Grillat, grönt och gott",
     },
   ];
@@ -35,24 +45,31 @@ export const Activities = () => {
         <h2 className="text-orange-accent -rotate-2 text-2xl sm:text-3xl font-bold">
           Vad händer på festen?
         </h2>
-        <p className="text-white/70 mt-2">Aktiviteter hela dagen och kvällen</p>
+         <p className="mt-2">Aktiviteter hela dagen och kvällen</p>
       </div>
 
       {/* Grid */}
-      <div className="flex flex-wrap gap-4 justify-center">
+      <div className="flex flex-wrap sm:w-5/8 m-auto gap-4 justify-center">
         {activities.map((item, i) => (
           <div
-            key={i}
-            className="relative flex-[1_1_280px] max-w-sm bg-white/10 border border-white/20 backdrop-blur-md p-6 rounded-2xl overflow-hidden"
+            key={item.title}
+            className="relative flex-[1_1_280px] max-w-sm bg-white/10 border border-white/20 backdrop-blur-md rounded-2xl overflow-hidden"
           >
-            {/* glow accent */}
-            <div className="absolute -top-10 -left-10 w-24 h-24 bg-green-accent/20 blur-2xl rounded-full" />
+            <div className="relative ">
+              {/* <div className="text-3xl mb-3">{item.emoji}</div> */}
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-40 object-cover"
+              />
+              <div className="p-6 ">
+                <h3 className="text-xl font-bold text-orange-accent">
+                  {item.title}
+                </h3>
 
-            <h3 className="text-xl font-bold text-green-accent">
-              {item.title}
-            </h3>
-
-            <p className=" mt-2">{item.desc}</p>
+                <p className="mt-2 text-white/90">{item.desc}</p>
+              </div>
+            </div>
           </div>
         ))}
       </div>

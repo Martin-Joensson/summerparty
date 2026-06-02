@@ -7,6 +7,9 @@ import { Activities } from "./components/Activities";
 import { Cocktail } from "./components/Cocktail";
 import { Hospitality } from "./components/Hospitality";
 import { FoodInfo } from "./components/FoodInfo";
+import { Quote } from "./components/Quote";
+import { Image } from "./components/Image";
+import { Dresscode } from "./components/Dresscode";
 
 function App() {
   return (
@@ -15,6 +18,8 @@ function App() {
         <div className="hero min-h-screen flex items-center justify-center">
           <Hero />
         </div>
+        <Quote />
+        <Image />
       </section>
       <section>
         <Countdown />
@@ -23,16 +28,15 @@ function App() {
         <RsvpModal />
         <Attendees />
       </section>
-
-      <section>
-        <Cocktail />
-        <Activities />
-      </section>
       <FoodInfo />
+      <section>
+        <Activities />
+        <Cocktail />
+      </section>
+      <Dresscode />
       <Hospitality />
       <section>
         <RsvpModal />
-   
       </section>
     </>
   );
