@@ -84,7 +84,7 @@ export const RsvpModal = () => {
 
             {/* success state */}
             {status === "success" && (
-              <div className="text-center py-10 animate-pulse">
+              <div className="text-center py-10 animate-bounce">
                 <p className="text-2xl font-bold text-green-accent">
                   Du är med! 🎉
                 </p>

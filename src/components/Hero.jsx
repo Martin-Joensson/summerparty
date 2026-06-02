@@ -19,8 +19,6 @@ export const Hero = () => {
           <span className="block text-orange-accent">från 16:00</span>
           <span className="block mt-6">Hållsätrabacken</span>
         </h2>
-        <p className=" text-white">Barn och hundar välkomna!</p>
-        <p className=" text-white">Mer information kommer snart!</p>
       </div>
     </div>
   );

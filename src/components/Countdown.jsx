@@ -37,10 +37,10 @@ export const Countdown = () => {
 
   return (
     <div className="w-full px-6 py-12">
-      <h2 className="text-green-accent rotate-2 text-center">
-        Hur länge kvar?
+      <h2 className="text-orange-accent rotate-2 text-center">
+        Hur långt är det kvar?
       </h2>
-
+    
       <div className="mt-8 flex justify-center gap-6 sm:gap-12 -rotate-3">
         <TimeBlock value={timeLeft.days} label="dagar" rotation="-rotate-2" />
 

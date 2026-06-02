@@ -3,6 +3,10 @@ import { Hero } from "./components/Hero";
 import { Countdown } from "./components/Countdown";
 import { Rsvp } from "./components/Rsvp";
 import { RsvpModal } from "./components/RsvpModal";
+import { Activities } from "./components/Activities";
+import { Cocktail } from "./components/Cocktail";
+import { Hospitality } from "./components/Hospitality";
+import { FoodInfo } from "./components/FoodInfo";
 
 function App() {
   return (
@@ -16,11 +20,19 @@ function App() {
         <Countdown />
       </section>
       <section>
+        <RsvpModal />
         <Attendees />
       </section>
+
+      <section>
+        <Cocktail />
+        <Activities />
+      </section>
+      <FoodInfo />
+      <Hospitality />
       <section>
         <RsvpModal />
-        {/* <Rsvp /> */}
+   
       </section>
     </>
   );
