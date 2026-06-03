@@ -11,7 +11,20 @@ export const handler = async (event) => {
   const { name, people } = JSON.parse(event.body);
 
   // 1. Save RSVP
-  await supabase.from("rsvps").insert([{ name, people }]);
+ const { data: rsvpData, error: rsvpError } = await supabase
+   .from("rsvp")
+   .insert([{ name, people }]);
+
+ console.log("RSVP INSERT:", rsvpData);
+
+ if (rsvpError) {
+   console.error("RSVP ERROR:", rsvpError);
+
+   return {
+     statusCode: 500,
+     body: JSON.stringify(rsvpError),
+   };
+ }
 
   // 2. Get current count
   const { data } = await supabase
