@@ -29,7 +29,7 @@ export const FoodInfo = () => {
       emoji: "🍽️",
       image: plate,
       title: "Egen Mat",
-      desc: "Du får jättegärna ta med något att slänga på grillen.",
+      desc: "Du får jättegärna ta med något, vegetariskt eller ej, att slänga på grillen.",
     },
     {
       emoji: "🥤",
