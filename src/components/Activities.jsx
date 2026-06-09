@@ -15,7 +15,7 @@ export const Activities = () => {
     {
       title: "Cornhole",
       image: cornhole,
-      desc: "Tävla på lite barnligt vis",
+      desc: "Tävla på lite barnsligt vis",
     },
     {
       title: "Nerf-prickskytte",
