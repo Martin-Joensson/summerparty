@@ -1,4 +1,5 @@
 import heroImage from "../assets/bokeh.jpg";
+import { InCaseOfRain } from "./InCaseOfRain";
 
 export const Hero = () => {
   return (
@@ -19,6 +20,7 @@ export const Hero = () => {
           <span className="block text-orange-accent">från 16:00</span>
           <span className="block mt-6">Hållsätrabacken</span>
         </h2>
+      {/* <InCaseOfRain /> */}
       </div>
     </div>
   );
