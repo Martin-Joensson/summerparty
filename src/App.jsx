@@ -10,8 +10,11 @@ import { FoodInfo } from "./components/FoodInfo";
 import { Quote } from "./components/Quote";
 import { Image } from "./components/Image";
 import { Dresscode } from "./components/Dresscode";
+import { useState } from "react";
 
 function App() {
+  const [isStarted, setIsStarted] = useState(false);
+
   return (
     <>
       <section id="center">
@@ -22,10 +25,10 @@ function App() {
         <Image />
       </section>
       <section>
-        <Countdown />
+        <Countdown isStarted={isStarted} setIsStarted={setIsStarted} />
       </section>
       <section>
-        <RsvpModal />
+        {!isStarted && <RsvpModal />}
         <Attendees />
       </section>
       <FoodInfo />
@@ -35,9 +38,7 @@ function App() {
       </section>
       <Dresscode />
       <Hospitality />
-      <section>
-        <RsvpModal />
-      </section>
+      <section>{!isStarted && <RsvpModal />}</section>
     </>
   );
 }
